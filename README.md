@@ -1,7 +1,7 @@
 <h1 align="center">Bem-Vindo(a) ao projeto Lista de Compras (EM DESENVOLVIMENTO) 👋</h1>
 
 ## Descrição do Projeto
-<p align="left">App para lista de compras que trás o valor final no seu carrinho utilizando localstorage NÃO FUNCIONA NO SAFARI</p>
+<p align="left">App para lista de compras que trás o valor final no seu carrinho utilizando localstorage</p>
 
 ## Instalação
 
