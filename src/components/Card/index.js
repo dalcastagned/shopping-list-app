@@ -1,46 +1,76 @@
-import React from 'react';
+import React, { useState } from 'react';
+
 import SwipeableViews from 'react-swipeable-views';
+import { FaCaretRight, FaCaretLeft } from "react-icons/fa";
+import { IoMdTrash } from "react-icons/io";
+import { BsFillCartPlusFill, BsFillCartDashFill } from "react-icons/bs";
 
-const styles = {
-  slide: {
-    padding: 15,
-    minHeight: 100,
-    color: '#fff',
-  },
-  slide1: {
-    backgroundColor: '#0f0',
-    display: 'flex',
-    justifyContent: 'right',
-    alignItems: 'center',
-    color: '#fff',
-    fontSize: '35px'
-  },
-  slide2: {
-    backgroundColor: '#000',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    color: '#fff',
-    fontSize: '35px'
-  },
-  slide3: {
-    backgroundColor: '#f00',
-    display: 'flex',
-    justifyContent: 'left',
-    alignItems: 'center',
-    color: '#fff',
-    fontSize: '35px'
-  },
-};
 
-const Card = () => {
-  return (
-    <SwipeableViews index={1} enableMouseEvents onChangeIndex={(index)=>{console.log(index)}}>
-      <div style={Object.assign({}, styles.slide, styles.slide1)}>Adicionar ao Carrinho</div>
-      <div style={Object.assign({}, styles.slide, styles.slide2)}>Item da lista</div>
-      <div style={Object.assign({}, styles.slide, styles.slide3)}>Remover Item</div>
-    </SwipeableViews>
-  );
+import * as S from './elements'
+
+const Card = ({ data, inCart }) => {
+
+    const [amount, setAmount] = useState(data.amount)
+    const [item, setItem] = useState(data.item)
+    const [value, setValue] = useState(data.value)
+
+    const handleSubmit = () => {
+    }
+
+    return (
+        <S.Container>
+            <SwipeableViews
+                enableMouseEvents
+                index={1}
+                onChangeIndex={(index) => {
+                    if (index === 0 && !inCart) {
+                        //addCart()
+                    }
+                    if (index === 0 && inCart) {
+                        //removeCart()
+                    }
+                    if (index === 1) {
+                        return
+                    }
+                    if (index === 2) {
+                        //removeItem()
+                    }
+                }}>
+                <S.Slide1>{inCart
+                    ? <BsFillCartDashFill />
+                    : <BsFillCartPlusFill />
+                }
+                    <FaCaretRight />
+                </S.Slide1>
+                <S.Slide2>
+                    <S.Information onChange={handleSubmit}>
+                        <S.Amount
+                            type='number'
+                            value={amount}
+                            onChange={(event) => {setAmount(event.target.value)}}
+                        />
+                        <S.Item
+                            type='text'
+                            value={item}
+                            maxlength="20"
+                            onChange={(event) => {setItem(event.target.value)}}
+                        />
+                        <S.Value>
+                            <p>R$:</p>
+                            <input
+                                type='number'
+                                min='1'
+                                max='999.99'
+                                value={value}
+                                onChange={(event) => {setValue(event.target.value)}}
+                            />
+                        </S.Value>
+                    </S.Information>
+                </S.Slide2>
+                <S.Slide3><FaCaretLeft /><IoMdTrash /></S.Slide3>
+            </SwipeableViews>
+        </S.Container>
+    );
 }
 
 export default Card;
