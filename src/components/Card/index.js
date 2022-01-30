@@ -43,7 +43,7 @@ const Card = ({ data }) => {
                     <FaCaretRight />
                 </S.Slide1>
                 <S.Slide2>
-                    <S.Information onChange={handleSubmit}>
+                    <S.Information onBlur={handleSubmit}>
                         <S.Amount inCart={data.inCart}
                             type='number'
                             value={amount}
