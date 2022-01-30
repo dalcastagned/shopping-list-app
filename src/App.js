@@ -1,16 +1,16 @@
-import Menu from "./components/Menu";
 import GlobalStyle, { Container } from "./styles/globalStyles";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import Cart from "./pages/Cart";
 import AllItems from "./pages/AllItems";
+import Header from "./components/Header";
 
 function App() {
   return (
     <Container>
       <Router>
         <GlobalStyle />
-        <Menu />
+        <Header />
         <Routes>
           <Route path="/" element={<HomePage/>} />
           <Route path="/cart" element={<Cart/>} />

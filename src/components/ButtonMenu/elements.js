@@ -18,7 +18,7 @@ export const ContainerInfo = styled.div`
     flex-direction: column;
     gap: 5px;
 
-    h1{
+    h2{
         color: ${({$isActive}) => $isActive ? '#fff' : '#757B80'};
         font-size: 15px;
     } 
