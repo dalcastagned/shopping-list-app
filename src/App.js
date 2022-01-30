@@ -1,11 +1,22 @@
-import Card from "./components/Card";
+import Menu from "./components/Menu";
 import GlobalStyle, { Container } from "./styles/globalStyles";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import Cart from "./pages/Cart";
+import AllItems from "./pages/AllItems";
 
 function App() {
   return (
     <Container>
-      <GlobalStyle />
-      <Card inCart={false} data={{ amount: 1, item: 'Item de Teste', value: 25.99 }} />
+      <Router>
+        <GlobalStyle />
+        <Menu />
+        <Routes>
+          <Route path="/" element={<HomePage/>} />
+          <Route path="/cart" element={<Cart/>} />
+          <Route path="/all" element={<AllItems/>} />
+        </Routes>
+      </Router>
     </Container>
   );
 }

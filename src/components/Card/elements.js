@@ -5,7 +5,7 @@ export const Container = styled.div`
 `
 
 export const Slide1 = styled.div`
-    background-color: #0b0;
+    background-color: ${({inCart}) => inCart ? '#00b' : '#0b0'};
     display: flex;
     justify-content: right;
     align-items: center;
@@ -49,6 +49,9 @@ export const Amount = styled.input`
     outline: none;
     color: #fff;
     font-size: 18px;
+    text-decoration: ${({inCart}) => inCart && 'line-through'};
+    opacity: ${({inCart}) => inCart && '0.6'};
+    font-style: ${({inCart}) => inCart && 'italic'};
 `
 
 export const Item = styled.input`
@@ -58,6 +61,9 @@ export const Item = styled.input`
     outline: none;
     color: #fff;
     font-size: 18px;
+    text-decoration: ${({inCart}) => inCart && 'line-through'};
+    opacity: ${({inCart}) => inCart && '0.6'};
+    font-style: ${({inCart}) => inCart && 'italic'};
 `
 
 export const Value = styled.div`
@@ -67,6 +73,9 @@ export const Value = styled.div`
     p {
         padding-right: 2px;
         font-size: 18px;
+        text-decoration: ${({inCart}) => inCart && 'line-through'};
+        opacity: ${({inCart}) => inCart && '0.6'};
+        font-style: ${({inCart}) => inCart && 'italic'};
     }
     
     input {
@@ -76,6 +85,9 @@ export const Value = styled.div`
         outline: none;
         color: #fff;
         font-size: 18px;
+        text-decoration: ${({inCart}) => inCart && 'line-through'};
+        opacity: ${({inCart}) => inCart && '0.6'};
+        font-style: ${({inCart}) => inCart && 'italic'};
     }
    
 `

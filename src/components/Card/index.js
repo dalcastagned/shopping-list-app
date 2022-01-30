@@ -8,7 +8,7 @@ import { BsFillCartPlusFill, BsFillCartDashFill } from "react-icons/bs";
 
 import * as S from './elements'
 
-const Card = ({ data, inCart }) => {
+const Card = ({ data }) => {
 
     const [amount, setAmount] = useState(data.amount)
     const [item, setItem] = useState(data.item)
@@ -23,10 +23,10 @@ const Card = ({ data, inCart }) => {
                 enableMouseEvents
                 index={1}
                 onChangeIndex={(index) => {
-                    if (index === 0 && !inCart) {
+                    if (index === 0 && !data.inCart) {
                         //addCart()
                     }
-                    if (index === 0 && inCart) {
+                    if (index === 0 && data.inCart) {
                         //removeCart()
                     }
                     if (index === 1) {
@@ -36,7 +36,7 @@ const Card = ({ data, inCart }) => {
                         //removeItem()
                     }
                 }}>
-                <S.Slide1>{inCart
+                <S.Slide1 inCart={data.inCart}>{data.inCart
                     ? <BsFillCartDashFill />
                     : <BsFillCartPlusFill />
                 }
@@ -44,18 +44,18 @@ const Card = ({ data, inCart }) => {
                 </S.Slide1>
                 <S.Slide2>
                     <S.Information onChange={handleSubmit}>
-                        <S.Amount
+                        <S.Amount inCart={data.inCart}
                             type='number'
                             value={amount}
                             onChange={(event) => {setAmount(event.target.value)}}
                         />
-                        <S.Item
+                        <S.Item inCart={data.inCart}
                             type='text'
                             value={item}
                             maxlength="20"
                             onChange={(event) => {setItem(event.target.value)}}
                         />
-                        <S.Value>
+                        <S.Value inCart={data.inCart}>
                             <p>R$:</p>
                             <input
                                 type='number'

@@ -18,5 +18,7 @@ body {
 
 export const Container = styled.div`
     min-height: 100vh;
+    max-width: 580px;
+    margin: 0 auto;
 `
 export default GlobalStyle
