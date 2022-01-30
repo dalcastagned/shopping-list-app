@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 
 import SwipeableViews from 'react-swipeable-views';
 import { FaCaretRight, FaCaretLeft } from "react-icons/fa";
@@ -7,12 +7,14 @@ import { BsFillCartPlusFill, BsFillCartDashFill } from "react-icons/bs";
 
 
 import * as S from './elements'
+import { ItemContext } from '../../context';
 
 const Card = ({ data }) => {
 
     const [amount, setAmount] = useState(data.amount)
     const [item, setItem] = useState(data.item)
     const [value, setValue] = useState(data.value)
+    const {removeItem, addCart, removeCart} = useContext(ItemContext)
 
     const handleSubmit = () => {
     }
@@ -24,16 +26,16 @@ const Card = ({ data }) => {
                 index={1}
                 onChangeIndex={(index) => {
                     if (index === 0 && !data.inCart) {
-                        //addCart()
+                        addCart(data.id)
                     }
                     if (index === 0 && data.inCart) {
-                        //removeCart()
+                        removeCart(data.id)
                     }
                     if (index === 1) {
                         return
                     }
                     if (index === 2) {
-                        //removeItem()
+                        removeItem(data.id)
                     }
                 }}>
                 <S.Slide1 inCart={data.inCart}>{data.inCart

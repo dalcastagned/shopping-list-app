@@ -34,9 +34,14 @@ export const Container = styled.form`
             color: #fff;
         }
     }
+
+    button{
+        background: transparent;
+        border: none;
+    }
 `
 
 export const AddIcon = styled(AiFillPlusCircle)`
-    font-size: 50px;
+    font-size: 40px;
     color: #fff;
 `
