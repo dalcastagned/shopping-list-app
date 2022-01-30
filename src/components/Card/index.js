@@ -48,21 +48,21 @@ const Card = ({ data }) => {
                             type='number'
                             value={amount}
                             onChange={(event) => {setAmount(event.target.value)}}
+                            placeholder='0'
                         />
                         <S.Item inCart={data.inCart}
                             type='text'
                             value={item}
-                            maxlength="20"
                             onChange={(event) => {setItem(event.target.value)}}
+                            placeholder='Item'
                         />
                         <S.Value inCart={data.inCart}>
                             <p>R$:</p>
                             <input
                                 type='number'
-                                min='1'
-                                max='999.99'
                                 value={value}
                                 onChange={(event) => {setValue(event.target.value)}}
+                                placeholder='0,00'
                             />
                         </S.Value>
                     </S.Information>
