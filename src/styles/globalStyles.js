@@ -20,5 +20,7 @@ export const Container = styled.div`
     min-height: 100vh;
     max-width: 580px;
     margin: 0 auto;
+    position: relative;
+    padding-bottom: 30px;
 `
 export default GlobalStyle

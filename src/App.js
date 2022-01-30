@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage";
 import Cart from "./pages/Cart";
 import AllItems from "./pages/AllItems";
 import Header from "./components/Header";
+import Copyright from "./components/Copyright";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/cart" element={<Cart/>} />
           <Route path="/all" element={<AllItems/>} />
         </Routes>
+        <Copyright/>
       </Router>
     </Container>
   );
