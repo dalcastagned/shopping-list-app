@@ -1,6 +1,8 @@
 import React, { useContext, useState } from 'react';
-import { ItemContext } from '../../context';
+
 import * as S from './elements'
+
+import { ItemContext } from '../../context';
 
 const FloatingButton = ({ type }) => {
 

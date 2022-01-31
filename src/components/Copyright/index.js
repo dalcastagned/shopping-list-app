@@ -1,4 +1,5 @@
 import React from 'react'
+
 import {Footer, FooterText} from './elements'
 
 const Copyright = () => {

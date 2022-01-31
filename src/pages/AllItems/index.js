@@ -1,8 +1,10 @@
 import React, { useContext } from 'react';
+
 import Card from '../../components/Card';
 import FloatingButton from '../../components/FloatingButton';
-import { ItemContext } from '../../context';
 import * as S from './elements'
+
+import { ItemContext } from '../../context';
 
 const AllItems = () => {
      

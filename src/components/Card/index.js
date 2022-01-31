@@ -1,10 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
+
 import { FaCaretRight, FaCaretLeft } from "react-icons/fa";
 import { IoMdTrash } from "react-icons/io";
 import { BsFillCartPlusFill, BsFillCartDashFill } from "react-icons/bs";
-import * as S from './elements'
-import { ItemContext } from '../../context';
 import ReactSwipe from 'react-swipe';
+
+import * as S from './elements'
+
+import { ItemContext } from '../../context';
 
 const Card = ({ data, blockFunctions }) => {
 

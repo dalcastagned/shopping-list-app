@@ -1,5 +1,7 @@
 import React, { useContext } from 'react';
+
 import { useLocation } from 'react-router-dom';
+
 import { ItemContext } from '../../context';
 import ButtonMenu from '../ButtonMenu';
 import * as S from './elements';
