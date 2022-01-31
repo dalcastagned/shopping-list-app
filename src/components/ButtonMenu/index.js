@@ -7,7 +7,7 @@ const ButtonMenu = ({ $isActive, url, title, value, cart }) => {
             <S.ContainerInfo $isActive={$isActive}>
                 <h2>{title}</h2>
                 {cart
-                    ? <p>(R$:<span>{value.toFixed(2)}</span>)</p>
+                    ? <p>(R$:<span>{value.toFixed(2).replace('.', ',')}</span>)</p>
                     : <p>({value})</p>
                 }
             </S.ContainerInfo>

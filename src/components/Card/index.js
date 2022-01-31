@@ -20,7 +20,11 @@ const Card = ({ data, blockFunctions }) => {
   useEffect(() => {
     setAmount(data.amount)
     setItem(data.item)
-    setValue(data.value)
+    if (data.value > 0) {
+      setValue(data.value.toFixed(2))
+    } else {
+      setValue(data.value)
+    }
   }, [data])
 
   let reactSwipeEl;
