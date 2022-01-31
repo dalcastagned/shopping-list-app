@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import Copyright from "./components/Copyright";
 import { ItemProvider } from "./context";
 import { Toaster } from "react-hot-toast";
+import AllItems from "./pages/AllItems";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/all" element={<AllItems />} />
           </Routes>
           <Copyright />
         </Router>
