@@ -8,12 +8,13 @@ import ReactSwipe from 'react-swipe';
 
 const Card = ({ data }) => {
 
-  const { removeItem, addCart, removeCart } = useContext(ItemContext)
+  const { removeItem, addCart, removeCart, updateItem } = useContext(ItemContext)
   const [amount, setAmount] = useState(data.amount)
   const [item, setItem] = useState(data.item)
   const [value, setValue] = useState(data.value)
 
-  const handleSubmit = () => {
+  const handleUpdateItem = () => {
+    updateItem(data.id, parseInt(amount), item, parseFloat(value))
   }
 
   useEffect(() => {
@@ -29,10 +30,13 @@ const Card = ({ data }) => {
       <ReactSwipe
         className="carousel"
         swipeOptions={{
-          continuous: false, startSlide: 1, speed: 10, transitionEnd: function (index) {
+          continuous: false,
+          startSlide: 1,
+          speed: 10,
+          transitionEnd: function (index) {
             if (index === 0 && !data.inCart) {
               reactSwipeEl.next()
-              addCart(data.id)
+              addCart(data.id, parseInt(amount), item, parseFloat(value))
             }
             if (index === 0 && data.inCart) {
               reactSwipeEl.next()
@@ -56,7 +60,7 @@ const Card = ({ data }) => {
           <FaCaretRight />
         </S.Slide1>
         <S.Slide2>
-          <S.Information onBlur={handleSubmit}>
+          <S.Information onBlur={handleUpdateItem}>
             <S.Amount inCart={data.inCart}
               type='number'
               value={amount}

@@ -45,10 +45,29 @@ export const ItemProvider = ({ children }) => {
         toast.success('Item Removido')
     }
 
-    const handleAddCart = (id) => {
+    const handleUpdateItem = (id, amount, item, value) => {
 
         const index = items.findIndex(item => item.id === id)
         let tempItem = [...items]
+        let tempElement = { ...tempItem[index] }
+
+        tempElement.amount = amount
+        tempElement.item = item
+        tempElement.value = value
+        tempItem[index] = tempElement
+
+        setItems(tempItem)
+        localStorage.setItem("item", JSON.stringify(tempItem));
+    }
+
+    const handleAddCart = (id, amount, item, value) => {
+
+        handleUpdateItem(id, amount, item, value)
+
+        const newItems = JSON.parse(localStorage.getItem("item"))
+
+        const index = newItems.findIndex(item => item.id === id)
+        let tempItem = [...newItems]
         let tempElement = { ...tempItem[index] }
 
         tempElement.inCart = true
@@ -79,6 +98,7 @@ export const ItemProvider = ({ children }) => {
                 removeItem: handleRemoveItem,
                 addCart: handleAddCart,
                 removeCart: handleRemoveCart,
+                updateItem: handleUpdateItem,
                 items: items,
                 totalCart: totalCart
             }}
