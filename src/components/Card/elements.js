@@ -5,7 +5,7 @@ export const Container = styled.div`
 `
 
 export const Slide1 = styled.div`
-    background-color: ${({ inCart }) => inCart ? '#00b' : '#0b0'};
+    background-color: ${({inCart}) => inCart ? '#00b' : '#0b0'};
     display: flex;
     justify-content: right;
     align-items: center;
@@ -13,7 +13,6 @@ export const Slide1 = styled.div`
     font-size: 30px;
     min-height: 50px;
     padding: 15px;
-    width: 50px;
 `
 
 export const Slide2 = styled.div`
@@ -35,7 +34,7 @@ export const Slide3 = styled.div`
     padding: 15px;
 `
 
-export const Information = styled.div`
+export const Information = styled.form`
     width: 100%;
     padding: 0 20px;
     display: grid;
@@ -43,52 +42,66 @@ export const Information = styled.div`
     gap: 10px;
 `
 
-export const Amount = styled.p`
+export const Amount = styled.input`
     width: 100%;
     border: none;
     background-color: transparent;
     outline: none;
     color: #fff;
     font-size: 18px;
-    text-decoration: ${({ inCart }) => inCart && 'line-through'};
-    opacity: ${({ inCart }) => inCart && '0.6'};
-    font-style: ${({ inCart }) => inCart && 'italic'};
+    text-decoration: ${({inCart}) => inCart && 'line-through'};
+    opacity: ${({inCart}) => inCart && '0.6'};
+    font-style: ${({inCart}) => inCart && 'italic'};
+    -moz-appearance: textfield;
+
+    ::-webkit-outer-spin-button,
+    ::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
 `
 
-export const Item = styled.p`
+export const Item = styled.input`
     width: 100%;
     border: none;
     background-color: transparent;
     outline: none;
     color: #fff;
     font-size: 18px;
-    text-decoration: ${({ inCart }) => inCart && 'line-through'};
-    opacity: ${({ inCart }) => inCart && '0.6'};
-    font-style: ${({ inCart }) => inCart && 'italic'};
+    text-decoration: ${({inCart}) => inCart && 'line-through'};
+    opacity: ${({inCart}) => inCart && '0.6'};
+    font-style: ${({inCart}) => inCart && 'italic'};
 `
 
 export const Value = styled.div`
     display: flex;
     color: #fff;
-
     p {
         padding-right: 2px;
         font-size: 18px;
-        text-decoration: ${({ inCart }) => inCart && 'line-through'};
-        opacity: ${({ inCart }) => inCart && '0.6'};
-        font-style: ${({ inCart }) => inCart && 'italic'};
-    span {
+        text-decoration: ${({inCart}) => inCart && 'line-through'};
+        opacity: ${({inCart}) => inCart && '0.6'};
+        font-style: ${({inCart}) => inCart && 'italic'};
+    }
+    
+    input {
         width: 100%;
         border: none;
         background-color: transparent;
         outline: none;
         color: #fff;
         font-size: 18px;
-        text-decoration: ${({ inCart }) => inCart && 'line-through'};
-        opacity: ${({ inCart }) => inCart && '0.6'};
-        font-style: ${({ inCart }) => inCart && 'italic'};
+        text-decoration: ${({inCart}) => inCart && 'line-through'};
+        opacity: ${({inCart}) => inCart && '0.6'};
+        font-style: ${({inCart}) => inCart && 'italic'};
+        -moz-appearance: textfield;
+
+        ::-webkit-outer-spin-button,
+        ::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
     }
-    }
-    
    
 `
