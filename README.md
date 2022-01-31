@@ -1,7 +1,10 @@
-<h1 align="center">Bem-Vindo(a) ao projeto Lista de Compras (EM DESENVOLVIMENTO) 👋</h1>
+<h1 align="center">Bem-Vindo(a) ao projeto Lista de Compras 👋</h1>
+
+## Preview
+<p align="left">https://listaparacompras.vercel.app/</p>
 
 ## Descrição do Projeto
-<p align="left">App para lista de compras que trás o valor final no seu carrinho utilizando localstorage</p>
+<p align="left">App para lista de compras que trás o valor final no seu carrinho utilizando localstorage (não funciona no navegador Safari)</p>
 
 ## Instalação
 
@@ -28,6 +31,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [React-Icons](https://react-icons.github.io/react-icons)
 - [Styled-Components](https://styled-components.com/)
 - [React-Hot-Toast](https://react-hot-toast.com/)
+- [React-Swipe](https://github.com/voronianski/react-swipe)
 ## Autor
 
 <a href="https://github.com/dalcastagned">
