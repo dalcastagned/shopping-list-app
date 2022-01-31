@@ -6,15 +6,22 @@ export const ItemContext = createContext([]);
 
 export const ItemProvider = ({ children }) => {
 
-    const [items, setItems] = useState([])
+    const [totalCart, setTotalCart] = useState(0)
+    const [items, setItems] = useState(
+        JSON.parse(localStorage.getItem("item")) != null
+            ? JSON.parse(localStorage.getItem("item"))
+            : []
+    )
 
-    useEffect(() => {
-        setItems(
-            JSON.parse(localStorage.getItem("item")) != null
-                ? JSON.parse(localStorage.getItem("item"))
-                : []
-        )
-    }, [])
+    useEffect (() => {
+        let total = 0
+        items
+        .filter(item => item.inCart === true)
+        .map(item => (
+            total += (item.amount * item.value)
+        ))
+        setTotalCart(total)
+    }, [items])
 
     const handleAddItem = (item) => {
         const newItem = ({
@@ -72,7 +79,8 @@ export const ItemProvider = ({ children }) => {
                 removeItem: handleRemoveItem,
                 addCart: handleAddCart,
                 removeCart: handleRemoveCart,
-                items: items
+                items: items,
+                totalCart: totalCart
             }}
         >
             {children}

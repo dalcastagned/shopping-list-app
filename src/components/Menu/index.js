@@ -7,12 +7,12 @@ import * as S from './elements';
 const Menu = () => {
 
     const { pathname } = useLocation()
-    const {items} = useContext(ItemContext)
+    const {items, totalCart} = useContext(ItemContext)
     
     return (
         <S.Container>
             <ButtonMenu $isActive={pathname === '/'} url='/' title='Restantes' value={items.filter(item => item.inCart === false).length}/>
-            <ButtonMenu $isActive={pathname === '/cart'} url='/cart' title='Carrinho' value={1} cart={true}/>
+            <ButtonMenu $isActive={pathname === '/cart'} url='/cart' title='Carrinho' value={totalCart} cart={true}/>
         </S.Container>
     )
 };
