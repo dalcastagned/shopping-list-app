@@ -10,7 +10,7 @@ const AllItems = () => {
 
     return (
         <S.Container>
-            <FloatingButton type={'trash'}/>
+            {items.length>0 && <FloatingButton type={'trash'}/>}
             {React.Children.toArray(items
             .map(item => (
                 <Card data={item} blockFunctions={true}/>

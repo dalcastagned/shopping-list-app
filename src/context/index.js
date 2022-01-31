@@ -32,8 +32,8 @@ export const ItemProvider = ({ children }) => {
             inCart: false
         })
 
-        setItems([newItem, ...items ])
-        localStorage.setItem("item", JSON.stringify([newItem, ...items ]));
+        setItems([newItem, ...items])
+        localStorage.setItem("item", JSON.stringify([newItem, ...items]));
         toast.success('Item Adicionado')
     }
 
@@ -91,6 +91,28 @@ export const ItemProvider = ({ children }) => {
         toast.success('Removido do Carrinho')
     }
 
+    const handleClearAll = () => {
+        localStorage.removeItem('item')
+        setItems([])
+        toast.success('Lista removida')
+    }
+
+    const handleEmptyCart = () => {
+        let tempItem = [...items]
+        let tempElement = {}
+
+        items.map((item, index) => {
+            tempElement = item
+            tempElement.inCart = false
+            tempItem[index] = tempElement
+            return null
+        })
+
+        setItems(tempItem)
+        localStorage.setItem("item", JSON.stringify(tempItem));
+        toast.success('Carrinho esvaziado')
+    }
+
     return (
         <ItemContext.Provider
             value={{
@@ -99,6 +121,8 @@ export const ItemProvider = ({ children }) => {
                 addCart: handleAddCart,
                 removeCart: handleRemoveCart,
                 updateItem: handleUpdateItem,
+                removeAll: handleClearAll,
+                emptyCart: handleEmptyCart,
                 items: items,
                 totalCart: totalCart
             }}

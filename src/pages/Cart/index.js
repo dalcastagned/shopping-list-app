@@ -10,7 +10,7 @@ const Cart = () => {
 
     return (
         <S.Container>
-            {items.filter((item) => item.inCart !== false).length > 1
+            {items.filter((item) => item.inCart !== false).length > 0
                 && <FloatingButton type={'removeCart'} />
             }
             {React.Children.toArray(items
