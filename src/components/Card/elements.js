@@ -5,7 +5,7 @@ export const Container = styled.div`
 `
 
 export const Slide1 = styled.div`
-    background-color: ${({inCart}) => inCart ? '#00b' : '#0b0'};
+    background-color: ${({ inCart }) => inCart ? '#00b' : '#0b0'};
     display: flex;
     justify-content: right;
     align-items: center;
@@ -13,6 +13,7 @@ export const Slide1 = styled.div`
     font-size: 30px;
     min-height: 50px;
     padding: 15px;
+    width: 50px;
 `
 
 export const Slide2 = styled.div`
@@ -34,7 +35,7 @@ export const Slide3 = styled.div`
     padding: 15px;
 `
 
-export const Information = styled.form`
+export const Information = styled.div`
     width: 100%;
     padding: 0 20px;
     display: grid;
@@ -42,28 +43,28 @@ export const Information = styled.form`
     gap: 10px;
 `
 
-export const Amount = styled.input`
+export const Amount = styled.p`
     width: 100%;
     border: none;
     background-color: transparent;
     outline: none;
     color: #fff;
     font-size: 18px;
-    text-decoration: ${({inCart}) => inCart && 'line-through'};
-    opacity: ${({inCart}) => inCart && '0.6'};
-    font-style: ${({inCart}) => inCart && 'italic'};
+    text-decoration: ${({ inCart }) => inCart && 'line-through'};
+    opacity: ${({ inCart }) => inCart && '0.6'};
+    font-style: ${({ inCart }) => inCart && 'italic'};
 `
 
-export const Item = styled.input`
+export const Item = styled.p`
     width: 100%;
     border: none;
     background-color: transparent;
     outline: none;
     color: #fff;
     font-size: 18px;
-    text-decoration: ${({inCart}) => inCart && 'line-through'};
-    opacity: ${({inCart}) => inCart && '0.6'};
-    font-style: ${({inCart}) => inCart && 'italic'};
+    text-decoration: ${({ inCart }) => inCart && 'line-through'};
+    opacity: ${({ inCart }) => inCart && '0.6'};
+    font-style: ${({ inCart }) => inCart && 'italic'};
 `
 
 export const Value = styled.div`
@@ -73,21 +74,21 @@ export const Value = styled.div`
     p {
         padding-right: 2px;
         font-size: 18px;
-        text-decoration: ${({inCart}) => inCart && 'line-through'};
-        opacity: ${({inCart}) => inCart && '0.6'};
-        font-style: ${({inCart}) => inCart && 'italic'};
-    }
-    
-    input {
+        text-decoration: ${({ inCart }) => inCart && 'line-through'};
+        opacity: ${({ inCart }) => inCart && '0.6'};
+        font-style: ${({ inCart }) => inCart && 'italic'};
+    span {
         width: 100%;
         border: none;
         background-color: transparent;
         outline: none;
         color: #fff;
         font-size: 18px;
-        text-decoration: ${({inCart}) => inCart && 'line-through'};
-        opacity: ${({inCart}) => inCart && '0.6'};
-        font-style: ${({inCart}) => inCart && 'italic'};
+        text-decoration: ${({ inCart }) => inCart && 'line-through'};
+        opacity: ${({ inCart }) => inCart && '0.6'};
+        font-style: ${({ inCart }) => inCart && 'italic'};
     }
+    }
+    
    
 `
