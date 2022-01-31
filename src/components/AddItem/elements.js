@@ -11,7 +11,13 @@ export const Container = styled.form`
     gap: 15px;
     padding: 15px;
 
-    input {
+    button{
+        background: transparent;
+        border: none;
+    }
+`
+
+export const Item = styled.input`
         width: 100%;
         border: none;
         outline: none;
@@ -33,12 +39,31 @@ export const Container = styled.form`
         ::-ms-input-placeholder { 
             color: #fff;
         }
-    }
+`
 
-    button{
-        background: transparent;
+export const Amount = styled.input`
+        width: 50px;
         border: none;
-    }
+        outline: none;
+        background: #757B80;
+        border-radius: 8px;
+        font-size: 18px;
+        color: #fff;
+        padding: 8px;
+        text-align: center;
+
+        ::placeholder {
+            color: #fff;
+            opacity: 1; 
+        }
+
+        :-ms-input-placeholder { 
+            color: #fff;
+        }
+
+        ::-ms-input-placeholder { 
+            color: #fff;
+        }
 `
 
 export const AddIcon = styled(AiFillPlusCircle)`

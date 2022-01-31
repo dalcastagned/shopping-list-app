@@ -13,27 +13,27 @@ export const ItemProvider = ({ children }) => {
             : []
     )
 
-    useEffect (() => {
+    useEffect(() => {
         let total = 0
         items
-        .filter(item => item.inCart === true)
-        .map(item => (
-            total += (item.amount * item.value)
-        ))
+            .filter(item => item.inCart === true)
+            .map(item => (
+                total += (item.amount * item.value)
+            ))
         setTotalCart(total)
     }, [items])
 
-    const handleAddItem = (item) => {
+    const handleAddItem = (item, amount) => {
         const newItem = ({
             id: uuidv4(),
-            amount: 1,
+            amount: amount,
             item: item,
             value: '',
             inCart: false
         })
 
-        setItems([...items, newItem])
-        localStorage.setItem("item", JSON.stringify([...items, newItem]));
+        setItems([newItem, ...items ])
+        localStorage.setItem("item", JSON.stringify([newItem, ...items ]));
         toast.success('Item Adicionado')
     }
 

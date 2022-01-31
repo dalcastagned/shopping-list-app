@@ -5,23 +5,36 @@ import * as S from './elements'
 const AddItem = () => {
 
     const [item, setItem] = useState('')
-    const {addItem} = useContext(ItemContext)
+    const [amount, setAmount] = useState(1)
+    const { addItem } = useContext(ItemContext)
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        addItem(item)
-        setItem('')
-        document.getElementById("inputItem").focus();
+        if (amount > 0 && item.length > 0) {
+            addItem(item, amount)
+            setItem('')
+            setAmount(1)
+            document.getElementById("inputItem").focus();
+        } else {
+            return
+        }
     }
 
     return (
         <S.Container onSubmit={handleSubmit}>
-            <input 
-            id='inputItem'
-            type='text' 
-            placeholder='Adicione um item' 
-            value={item}
-            onChange={(event) => {setItem(event.target.value)}}
+            <S.Amount
+                type='number'
+                placeholder='Qtd.'
+                maxLength={2}
+                value={amount}
+                onChange={(event) => { setAmount(event.target.value) }}
+            />
+            <S.Item
+                id='inputItem'
+                type='text'
+                placeholder='Digite um item'
+                value={item}
+                onChange={(event) => { setItem(event.target.value) }}
             />
             <button type='submit'><S.AddIcon /></button>
         </S.Container>
