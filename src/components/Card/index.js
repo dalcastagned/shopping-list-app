@@ -71,6 +71,9 @@ const Card = ({ data, blockFunctions }) => {
               if (index === 0 && !data.inCart) {
                 reactSwipeEl.next()
                 addCart(data.id, parseInt(amount), item, parseFloat(value))
+                document.getElementById("amountInput").blur();
+                document.getElementById("itemInput").blur();
+                document.getElementById("valueInput").blur();
               }
               if (index === 0 && data.inCart) {
                 reactSwipeEl.next()
@@ -96,12 +99,14 @@ const Card = ({ data, blockFunctions }) => {
           <S.Slide2>
             <S.Information onBlur={handleUpdateItem}>
               <S.Amount inCart={data.inCart}
+                id='amountInput'
                 type='number'
                 value={amount}
                 onChange={(event) => { setAmount(event.target.value) }}
                 placeholder='0'
               />
               <S.Item inCart={data.inCart}
+                id='itemInput'
                 type='text'
                 value={item}
                 onChange={(event) => { setItem(event.target.value) }}
@@ -110,6 +115,7 @@ const Card = ({ data, blockFunctions }) => {
               <S.Value inCart={data.inCart}>
                 <p>R$:</p>
                 <input
+                  id='valueInput'
                   type='number'
                   value={value}
                   onChange={(event) => { setValue(event.target.value) }}
