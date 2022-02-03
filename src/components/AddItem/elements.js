@@ -51,6 +51,7 @@ export const Amount = styled.input`
         color: #fff;
         padding: 8px;
         text-align: center;
+        -moz-appearance: textfield;
 
         ::placeholder {
             color: #fff;
@@ -64,6 +65,14 @@ export const Amount = styled.input`
         ::-ms-input-placeholder { 
             color: #fff;
         }
+        
+
+        ::-webkit-outer-spin-button,
+        ::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }   
+
 `
 
 export const AddIcon = styled(AiFillPlusCircle)`
