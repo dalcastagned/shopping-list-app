@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import firebase from 'firebase'
 
@@ -18,6 +18,12 @@ const Header = () => {
 
         });
     }
+
+    useEffect (() => {
+        if (window.innerWidth > 580){
+            handleLogout()
+        }
+    }, [])
 
     if (pathname === '/' || pathname === '/signup') {
         return null
