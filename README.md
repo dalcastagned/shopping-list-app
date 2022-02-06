@@ -3,6 +3,10 @@
 ## Preview
 <p align="left">https://listaparacompras.vercel.app/</p>
 
+<p align="center">
+    <img src='https://github.com/dalcastagned/shopping-list-app/blob/main/src/images/preview.gif'>
+</p>
+
 ## Descrição do Projeto
 <p align="left">App para lista de compras que trás o valor final no seu carrinho utilizando firebase para autenticação e banco de dados</p>
 
