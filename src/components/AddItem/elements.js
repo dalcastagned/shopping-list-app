@@ -21,23 +21,25 @@ export const Item = styled.input`
         width: 100%;
         border: none;
         outline: none;
-        background: #757B80;
-        border-radius: 8px;
+        background: transparent;
+        border-bottom: 2px solid #757B80;
         font-size: 18px;
         color: #fff;
         padding: 8px;
 
         ::placeholder {
             color: #fff;
-            opacity: 1; 
+            opacity: 0.7; 
         }
 
         :-ms-input-placeholder { 
             color: #fff;
+            opacity: 0.7; 
         }
 
         ::-ms-input-placeholder { 
             color: #fff;
+            opacity: 0.7; 
         }
 `
 
@@ -45,8 +47,8 @@ export const Amount = styled.input`
         width: 50px;
         border: none;
         outline: none;
-        background: #757B80;
-        border-radius: 8px;
+        background: transparent;
+        border-bottom: 2px solid #757B80;
         font-size: 18px;
         color: #fff;
         padding: 8px;
@@ -55,18 +57,19 @@ export const Amount = styled.input`
 
         ::placeholder {
             color: #fff;
-            opacity: 1; 
+            opacity: 0.8; 
         }
 
         :-ms-input-placeholder { 
             color: #fff;
+            opacity: 0.7; 
         }
 
         ::-ms-input-placeholder { 
             color: #fff;
+            opacity: 0.7; 
         }
         
-
         ::-webkit-outer-spin-button,
         ::-webkit-inner-spin-button {
             -webkit-appearance: none;

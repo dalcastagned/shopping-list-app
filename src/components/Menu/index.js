@@ -13,9 +13,9 @@ const Menu = () => {
     
     return (
         <S.Container>
-            <ButtonMenu $isActive={pathname === '/'} url='/' title='Restantes' value={items.filter(item => item.inCart === false).length}/>
-            <ButtonMenu $isActive={pathname === '/cart'} url='/cart' title='Carrinho' value={totalCart} cart={true}/>
-            <ButtonMenu $isActive={pathname === '/all'} url='/all' title='Todos Itens' value={items.length}/>
+            <ButtonMenu $isActive={pathname === '/home'} url={`/home`} title='Restantes' value={items.filter(item => item.inCart === false).length}/>
+            <ButtonMenu $isActive={pathname === '/cart'} url={`/cart`} title='Carrinho' value={totalCart} cart={true}/>
+            <ButtonMenu $isActive={pathname === '/all'} url={`/all`} title='Todos Itens' value={items.length}/>
         </S.Container>
     )
 };

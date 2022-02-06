@@ -1,14 +1,23 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 
 import Card from '../../components/Card';
 import FloatingButton from '../../components/FloatingButton';
 import * as S from './elements'
 
 import { ItemContext } from '../../context';
+import { useNavigate } from 'react-router-dom';
 
 const AllItems = () => {
      
-    const {items} = useContext(ItemContext)
+    const { items, userId } = useContext(ItemContext)
+    const navigate = useNavigate();
+
+    useEffect(()=>{
+        if (userId === null){
+            navigate('/')
+        }
+        return
+    })
 
     return (
         <S.Container>

@@ -1,116 +1,98 @@
 import { createContext, useEffect, useState } from "react";
 
 import toast from "react-hot-toast";
-import { v4 as uuidv4 } from 'uuid';
+
+import database from '../config/firebase'
 
 export const ItemContext = createContext([]);
 
 export const ItemProvider = ({ children }) => {
 
     const [totalCart, setTotalCart] = useState(0)
-    const [items, setItems] = useState(
-        JSON.parse(localStorage.getItem("item")) != null
-            ? JSON.parse(localStorage.getItem("item"))
-            : []
-    )
+    const [items, setItems] = useState([])
+    const [userId, setUserId] = useState(null)
+
+    useEffect(() => {
+        if (userId !== null) {
+            database.collection(userId).onSnapshot((query) => {
+                const list = []
+                query.forEach((doc) => {
+                    list.push({ ...doc.data(), id: doc.id })
+                })
+                setItems(list)
+            })
+        }
+    }, [userId])
 
     useEffect(() => {
         let total = 0
         items
             .filter(item => item.inCart === true)
             .map(item => (
-                total += (item.amount * item.value)
+                total += ((item.amount > 0 ? item.amount : 0) * (item.value > 0 ? item.value : 0))
             ))
         setTotalCart(total)
     }, [items])
 
+    const handleUserId = (userId) => {
+        setUserId(userId)
+    }
+
     const handleAddItem = (item, amount) => {
-        const newItem = ({
-            id: uuidv4(),
+        database.collection(userId).add({
             amount: amount,
             item: item,
             value: '',
             inCart: false
         })
-
-        setItems([newItem, ...items])
-        localStorage.setItem("item", JSON.stringify([newItem, ...items]));
         toast.success('Item Adicionado')
     }
 
     const handleRemoveItem = (id) => {
-        const itemFiltered = items.filter(item => item.id !== id)
-
-        setItems(itemFiltered)
-        localStorage.setItem("item", JSON.stringify(itemFiltered));
+        database.collection(userId).doc(id).delete()
         toast.success('Item Removido')
     }
 
     const handleUpdateItem = (id, amount, item, value) => {
 
-        const index = items.findIndex(item => item.id === id)
-        let tempItem = [...items]
-        let tempElement = { ...tempItem[index] }
-
-        tempElement.amount = amount
-        tempElement.item = item
-        tempElement.value = value
-        tempItem[index] = tempElement
-
-        setItems(tempItem)
-        localStorage.setItem("item", JSON.stringify(tempItem));
+        database.collection(userId).doc(id).update({
+            mount: amount,
+            item: item,
+            value: value
+        })
     }
 
     const handleAddCart = (id, amount, item, value) => {
 
         handleUpdateItem(id, amount, item, value)
 
-        const newItems = JSON.parse(localStorage.getItem("item"))
-
-        const index = newItems.findIndex(item => item.id === id)
-        let tempItem = [...newItems]
-        let tempElement = { ...tempItem[index] }
-
-        tempElement.inCart = true
-        tempItem[index] = tempElement
-
-        setItems(tempItem)
-        localStorage.setItem("item", JSON.stringify(tempItem));
+        database.collection(userId).doc(id).update({
+            inCart: true
+        })
         toast.success('Adicionado ao Carrinho')
     }
 
     const handleRemoveCart = (id) => {
-        const index = items.findIndex(item => item.id === id)
-        let tempItem = [...items]
-        let tempElement = { ...tempItem[index] }
 
-        tempElement.inCart = false
-        tempItem[index] = tempElement
-
-        setItems(tempItem)
-        localStorage.setItem("item", JSON.stringify(tempItem));
+        database.collection(userId).doc(id).update({
+            inCart: false
+        })
         toast.success('Removido do Carrinho')
     }
 
     const handleClearAll = () => {
-        localStorage.removeItem('item')
-        setItems([])
+        items.map((item) => (
+            database.collection(userId).doc(item.id).delete()
+        ))
         toast.success('Lista removida')
     }
 
     const handleEmptyCart = () => {
-        let tempItem = [...items]
-        let tempElement = {}
-
-        items.map((item, index) => {
-            tempElement = item
-            tempElement.inCart = false
-            tempItem[index] = tempElement
-            return null
-        })
-
-        setItems(tempItem)
-        localStorage.setItem("item", JSON.stringify(tempItem));
+        items.map((item) => (
+            database.collection(userId).doc(item.id).update({
+                inCart: false
+            })
+        ))
         toast.success('Carrinho esvaziado')
     }
 
@@ -124,8 +106,10 @@ export const ItemProvider = ({ children }) => {
                 updateItem: handleUpdateItem,
                 removeAll: handleClearAll,
                 emptyCart: handleEmptyCart,
+                setUserId: handleUserId,
+                userId: userId,
                 items: items,
-                totalCart: totalCart
+                totalCart: totalCart,
             }}
         >
             {children}
