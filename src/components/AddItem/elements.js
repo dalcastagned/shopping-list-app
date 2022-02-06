@@ -41,6 +41,15 @@ export const Item = styled.input`
             color: #fff;
             opacity: 0.7; 
         }
+
+        :-webkit-autofill,
+        :-webkit-autofill:hover, 
+        :-webkit-autofill:focus {
+            border-bottom: 2px solid #757B80;
+            -webkit-text-fill-color: #fff;
+            -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+            transition: background-color 5000s ease-in-out 0s;
+        }
 `
 
 export const Amount = styled.input`
