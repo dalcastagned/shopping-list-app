@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import firebase from 'firebase'
 
+import loading from '../../images/loading.gif'
 import { ItemContext } from '../../context';
 import * as S from './elements'
 
@@ -10,20 +11,24 @@ const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState(false)
+  const [loggingIn, setLoggingIn] = useState(false)
   const navigate = useNavigate();
   const { setUserId } = useContext(ItemContext)
 
   const loginFirebase = (event) => {
     event.preventDefault();
+    setLoggingIn(true)
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then((userCredential) => {
         let user = userCredential.user;
+        setLoggingIn(false)
         setPassword('')
         setEmail('')
         setUserId(user.uid)
         navigate(`/home`)
       })
       .catch(() => {
+        setLoggingIn(false)
         setError(true)
       });
   }
@@ -75,7 +80,12 @@ const Login = () => {
             </>
           }
         </S.Erro>
-        <S.Button type='submit'> Login</S.Button>
+        <S.Button type='submit'>
+          {loggingIn
+            ? <img src={loading} width={40} />
+            : 'Login'
+          }
+        </S.Button>
         <S.Registration>
           {`Não tem registro? `}
           <span

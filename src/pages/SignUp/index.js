@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import firebase from 'firebase'
 
+import loading from '../../images/loading.gif'
 import { ItemContext } from '../../context';
 import * as S from './elements'
 
@@ -11,19 +12,23 @@ const SignUp = () => {
   const [password1, setPassword1] = useState('')
   const [password2, setPassword2] = useState('')
   const [error, setError] = useState(false)
+  const [loggingIn, setLoggingIn] = useState(false)
   const [errorPassword, setErrorPassword] = useState(false)
   const navigate = useNavigate();
   const { setUserId } = useContext(ItemContext)
 
   const loginFirebase = (event) => {
     event.preventDefault();
+    setLoggingIn(true)
     if (password1 !== password2) {
+      setLoggingIn(false)
       setErrorPassword(true)
       return
     } else {
       firebase.auth().createUserWithEmailAndPassword(email, password1)
         .then((userCredential) => {
           let user = userCredential.user;
+          setLoggingIn(false)
           setPassword1('')
           setPassword2('')
           setEmail('')
@@ -31,6 +36,7 @@ const SignUp = () => {
           navigate(`/home`)
         })
         .catch(() => {
+          setLoggingIn(false)
           setError(true)
         });
     }
@@ -92,7 +98,12 @@ const SignUp = () => {
             </>
           }
         </S.Erro>
-        <S.Button type='submit'>Cadastrar</S.Button>
+        <S.Button type='submit'>
+          {loggingIn
+            ? <img src={loading} width={40} />
+            : 'Cadastrar'
+          }
+        </S.Button>
         <S.Registration>
           {`Já possui registro? `}
           <span
