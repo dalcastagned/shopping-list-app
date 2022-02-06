@@ -56,7 +56,7 @@ export const ItemProvider = ({ children }) => {
     const handleUpdateItem = (id, amount, item, value) => {
 
         database.collection(userId).doc(id).update({
-            mount: amount,
+            amount: amount,
             item: item,
             value: value
         })
