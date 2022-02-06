@@ -4,7 +4,7 @@
 <p align="left">https://listaparacompras.vercel.app/</p>
 
 ## Descrição do Projeto
-<p align="left">App para lista de compras que trás o valor final no seu carrinho utilizando localstorage (não funciona no navegador Safari)</p>
+<p align="left">App para lista de compras que trás o valor final no seu carrinho utilizando firebase para autenticação e banco de dados</p>
 
 ## Instalação
 
@@ -32,6 +32,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [Styled-Components](https://styled-components.com/)
 - [React-Hot-Toast](https://react-hot-toast.com/)
 - [React-Swipe](https://github.com/voronianski/react-swipe)
+- [Firebase](https://firebase.google.com/)
 ## Autor
 
 <a href="https://github.com/dalcastagned">
