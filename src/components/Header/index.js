@@ -23,6 +23,7 @@ const Header = () => {
         if (window.innerWidth > 580){
             handleLogout()
         }
+        // eslint-disable-next-line
     }, [])
 
     if (pathname === '/' || pathname === '/signup') {
