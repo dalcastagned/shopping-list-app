@@ -36,66 +36,74 @@ const SignUp = () => {
     }
   }
 
-  return (
-    <S.Container onSubmit={loginFirebase}>
-      <S.Title>Cadastro de Usuário</S.Title>
-      <S.Input
-        placeholder='Digite seu Email'
-        type='text'
-        value={email}
-        onChange={(e) => {
-          setEmail(e.target.value)
-          setError(false)
-          setErrorPassword(false)
-        }}
-      />
-      <S.Input
-        placeholder='Digite sua Senha'
-        type='password'
-        value={password1}
-        onChange={(e) => {
-          setPassword1(e.target.value)
-          setError(false)
-          setErrorPassword(false)
-        }}
-      />
-      <S.Input
-        placeholder='Confirme sua Senha'
-        type='password'
-        value={password2}
-        onChange={(e) => {
-          setPassword2(e.target.value)
-          setError(false)
-          setErrorPassword(false)
-        }}
-      />
-      <S.Erro>
-        {error === true
-          &&
-          <>
-            <S.ErroIcon />
-            <p>Email já cadastrado</p>
-          </>
-        }
-        {errorPassword === true
-          &&
-          <>
-            <S.ErroIcon />
-            <p>Senhas Diferentes</p>
-          </>
-        }
-      </S.Erro>
-      <S.Button type='submit'>Cadastrar</S.Button>
-      <S.Registration>
-        {`Já possui registro? `}
-        <span
-          onClick={() => navigate('/')}
-        >
-          Faça login agora...
-        </span>
-      </S.Registration>
-    </S.Container>
-  );
+  if (window.innerWidth > 580) {
+    return (
+      <S.ContainerInfo>
+        <h1>Olá, esse site foi feito apenas para celulares por isso não aparecerá em dispositivos acima de 580px de largura. Obrigado pela visita!</h1>
+      </S.ContainerInfo>
+    )
+  } else {
+    return (
+      <S.Container onSubmit={loginFirebase}>
+        <S.Title>Cadastro de Usuário</S.Title>
+        <S.Input
+          placeholder='Digite seu Email'
+          type='text'
+          value={email}
+          onChange={(e) => {
+            setEmail(e.target.value)
+            setError(false)
+            setErrorPassword(false)
+          }}
+        />
+        <S.Input
+          placeholder='Digite sua Senha'
+          type='password'
+          value={password1}
+          onChange={(e) => {
+            setPassword1(e.target.value)
+            setError(false)
+            setErrorPassword(false)
+          }}
+        />
+        <S.Input
+          placeholder='Confirme sua Senha'
+          type='password'
+          value={password2}
+          onChange={(e) => {
+            setPassword2(e.target.value)
+            setError(false)
+            setErrorPassword(false)
+          }}
+        />
+        <S.Erro>
+          {error === true
+            &&
+            <>
+              <S.ErroIcon />
+              <p>Email já cadastrado</p>
+            </>
+          }
+          {errorPassword === true
+            &&
+            <>
+              <S.ErroIcon />
+              <p>Senhas Diferentes</p>
+            </>
+          }
+        </S.Erro>
+        <S.Button type='submit'>Cadastrar</S.Button>
+        <S.Registration>
+          {`Já possui registro? `}
+          <span
+            onClick={() => navigate('/')}
+          >
+            Faça login agora...
+          </span>
+        </S.Registration>
+      </S.Container>
+    );
+  }
 };
 
 export default SignUp;

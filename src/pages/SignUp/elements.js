@@ -1,6 +1,19 @@
 import styled from "styled-components";
 import { GoAlert } from "react-icons/go";
 
+export const ContainerInfo = styled.div`
+    height: calc(100vh - 40px);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    h1{
+        text-align: center;
+        color: #fff;
+    }
+`
+
 export const Container = styled.form`
     display: flex;
     flex-direction: column;
