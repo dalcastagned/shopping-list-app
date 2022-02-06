@@ -100,7 +100,7 @@ const SignUp = () => {
         </S.Erro>
         <S.Button type='submit'>
           {loggingIn
-            ? <img src={loading} width={40} />
+            ? <img src={loading} width={40} alt='loading' />
             : 'Cadastrar'
           }
         </S.Button>
