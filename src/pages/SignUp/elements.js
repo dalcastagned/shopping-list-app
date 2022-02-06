@@ -30,7 +30,7 @@ export const Title = styled.h1`
     margin-top: 50px;
 `
 export const Input = styled.input`
-    width: 300px;
+    width: 260px;
     margin-top: 10px;
     padding: 10px;
     height: 60px;
